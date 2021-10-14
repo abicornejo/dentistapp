@@ -1,48 +1,51 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Container from '../components/container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
-import md5 from 'md5';
 import Link from "next/link";
-import PagPrincipal from "./home";
+import styles from '../components/styles/Layout.module.css';
+
+
 
 function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginStatus, setLoginStatus]= useState("");
-    const [user,setUser]= useState(null)
 
+    Axios.defaults.withCredentials = true;
 
     const login=()=>{
 
-        Axios.post('http://localhost:3001/login', {
+        Axios.post("http://localhost:3001/login", {
             username: username,
             password: password,
-        }).then((response)=>{
-
-            if(response.data.message){
+        }).then((response) => {
+            if (response.data.message) {
                 setLoginStatus(response.data.message);
-                console.log(response);
-            }else{
-                console.log(response);
-                {PagPrincipal()};
+            } else {
+                setLoginStatus(response.data[0].username);
             }
         });
-    }
+    };
 
-    const magSubmit=e=>{
-        e.preventDefault();
-    }
+    useEffect(() => {
+        Axios.get("http://localhost:3001/login").then((response) => {
+            if (response.data.loggedIn === true) {
+                setLoginStatus(response.data.user[0].username);
+            }
+        });
+    }, []);
+
 
 
     return (
         <Container>
-        <div className="containerPrincipal">
-            <div className="containerSecundario">
+        <div className={styles.containerPrincipal}>
+            <div className={styles.containerSecundario}>
                 <div className="form-group">
                     <h1>Iniciar sesion</h1>
                     <br/>
-                    <form onSubmit={magSubmit}>
+                    <form >
                     <label>Usuario: </label>
                     <br/>
                     <input
@@ -62,7 +65,7 @@ function Login () {
                         className="form-control"
                         name="password"
                         onChange={(e)=>{
-                            setPassword(md5(e.target.value));
+                            setPassword(e.target.value);
                         }}
                         placeholder="Ingrese su contraseña "
                     />
@@ -70,6 +73,7 @@ function Login () {
                     <h6>{loginStatus}</h6>
                     <button className="btn btn-primary" onClick={login}>Iniciar sesion</button>
                     </form>
+                    <br/>
                     <Link href="/register">
                         <button className="btn btn-primary">Registrarse</button>
                     </Link>

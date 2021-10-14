@@ -3,7 +3,6 @@ import Container from '../components/container';
 import Link from 'next/Link';
 import Axios from 'axios';
 import swal from 'sweetalert';
-import md5 from 'md5';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Register () {
@@ -17,10 +16,7 @@ function Register () {
         }).then((response)=>{
             console.log(response);
         });
-        swal({
-            text: "Usuario creado con exito",
-            button : "Aceptar"
-        });
+
     }
 
     return (
@@ -30,6 +26,7 @@ function Register () {
                 <div className="form-group">
                     <h1>Registrar</h1>
                     <br/>
+                    <form>
                     <label>Usuario: </label>
                     <br/>
                     <input
@@ -50,11 +47,12 @@ function Register () {
                         name="password"
                         placeholder="Ingrese su contraseña "
                         onChange={(e)=>{
-                            setPasswordReg  (md5(e.target.value));
+                            setPasswordReg  (e.target.value);
                         }}
                     />
                     <br/>
                     <button className="btn btn-primary" onClick={register}>Registrarse</button>
+                    </form>
                     <div>
                         <p>Ya tienes una cuenta?
                         <Link href="/login">
