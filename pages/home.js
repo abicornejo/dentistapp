@@ -8,14 +8,14 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
-Axios.defaults.withCredentials = true;
-useEffect(() => {
-    Axios.get("http://localhost:3001/login").then((response) => {
-        if (response.data.loggedIn === true) {
-            setRole(response.data.user[0].role);
-        }
-    });
-}, []);
+// Axios.defaults.withCredentials = true;
+// useEffect(() => {
+//     Axios.get("http://localhost:3001/login").then((response) => {
+//         if (response.data.loggedIn === true) {
+//             setRole(response.data.user[0].role);
+//         }
+//     });
+// }, []);
 
 const PagPrincipal = () =>{
     const [role, setRole] = useState("");
