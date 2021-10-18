@@ -20,7 +20,7 @@ app.use(
     })
 );
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(
     session({
@@ -43,7 +43,7 @@ const connection = mysql.createConnection({
     database: 'pruebasapi',
 });
 
-app.post('/add', (req,res) => {
+app.post('/add', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
@@ -64,13 +64,13 @@ app.post('/add', (req,res) => {
 
 app.get("/login", (req, res) => {
     if (req.session.user) {
-        res.send({ loggedIn: true, user: req.session.user });
+        res.send({loggedIn: true, user: req.session.user});
     } else {
-        res.send({ loggedIn: false });
+        res.send({loggedIn: false});
     }
 });
 
-app.post('/login', (req, res)=>{
+app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
@@ -79,7 +79,7 @@ app.post('/login', (req, res)=>{
         username,
         (err, result) => {
             if (err) {
-                res.send({ err: err });
+                res.send({err: err});
             }
 
             if (result.length) {
@@ -90,17 +90,16 @@ app.post('/login', (req, res)=>{
                         res.send(result);
                     } else {
 
-                        res.send({ message: "Usuario o contraseña invalida" });
+                        res.send({message: "Usuario o contraseña invalida"});
 
                     }
                 });
             } else {
 
-                res.send({ message: "El usuario no existe" });
+                res.send({message: "El usuario no existe"});
             }
             console.log(result);
         }
-
     );
 });
 

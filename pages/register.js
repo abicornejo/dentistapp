@@ -3,7 +3,10 @@ import Container from '../components/container';
 import Link from 'next/Link';
 import Axios from 'axios';
 import swal from 'sweetalert';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import styles from '../components/styles/Layout.module.css';
+import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
+import { Button } from 'primereact/button';
 
 function Register () {
     const [usernameReg, setUsernameReg] = useState("");
@@ -21,17 +24,17 @@ function Register () {
 
     return (
         <Container>
-        <div className="containerPrincipal">
-            <div className="containerSecundario">
-                <div className="form-group">
-                    <h1>Registrar</h1>
+        <div className={styles.containerPrincipal}>
+            <div className={styles.containerSecundario}>
+                <div className="p-fluid">
+                    <h2 className="p-text-center">Registrar</h2>
                     <br/>
-                    <form>
-                    <label>Usuario: </label>
+                    <form >
+                        <label htmlFor="firstname1">Usuario</label>
                     <br/>
-                    <input
+                    <InputText
                         type="text"
-                        className="form-control"
+                        className="p-field"
                         name="username"
                         placeholder="Ingrese su usuario "
                         onChange={(e)=>{
@@ -39,26 +42,27 @@ function Register () {
                         }}
                     />
                     <br/>
-                    <label>Contraseña: </label>
+                        <label htmlFor="lastname1">Contraseña</label>
                     <br/>
-                    <input
-                        type="password"
-                        className="form-control"
+                    <Password
+                        className="p-field"
                         name="password"
                         placeholder="Ingrese su contraseña "
                         onChange={(e)=>{
                             setPasswordReg  (e.target.value);
                         }}
+                        toggleMask
                     />
                     <br/>
-                    <button className="btn btn-primary" onClick={register}>Registrarse</button>
+                    <Button label="Registrarse" className="btn btn-primary" onClick={register}/>
                     </form>
+                    <br/>
                     <div>
-                        <p>Ya tienes una cuenta?
+                        <label>Ya tienes una cuenta?
                         <Link href="/login">
                             <a>Inicia sesion</a>
                         </Link>
-                        </p>
+                        </label>
                     </div>
 
 

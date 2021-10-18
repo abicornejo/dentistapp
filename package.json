@@ -25,7 +25,11 @@
     "next": "^11.1.2",
     "node": "^16.10.0",
     "office-ui-fabric-react": "^7.177.2",
+<<<<<<< HEAD
     "primeflex": "^3.0.1",
+=======
+    "primeflex": "^2.0.0",
+>>>>>>> 08c37d4ec534a08ccfaff7ae2773fa77915f0121
     "primeicons": "^4.1.0",
     "primereact": "^6.6.0",
     "react": "^17.0.2",

@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import Container from '../components/container';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
 import Link from "next/link";
 import styles from '../components/styles/Layout.module.css';
-
+import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
+import { Button } from 'primereact/button';
 
 
 function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginStatus, setLoginStatus]= useState("");
+
 
     Axios.defaults.withCredentials = true;
 
@@ -40,47 +42,48 @@ function Login () {
 
     return (
         <Container>
-        <div className={styles.containerPrincipal}>
-            <div className={styles.containerSecundario}>
-                <div className="form-group">
-                    <h1>Iniciar sesion</h1>
-                    <br/>
-                    <form >
-                    <label>Usuario: </label>
-                    <br/>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="username"
-                        onChange={(e)=>{
-                            setUsername(e.target.value);
-                        }}
-                        placeholder="Ingrese su usuario "
-                    />
-                    <br/>
-                    <label>Contraseña: </label>
-                    <br/>
-                    <input
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        onChange={(e)=>{
-                            setPassword(e.target.value);
-                        }}
-                        placeholder="Ingrese su contraseña "
-                    />
-                    <br/>
-                    <h6>{loginStatus}</h6>
-                    <button className="btn btn-primary" onClick={login}>Iniciar sesion</button>
-                    </form>
-                    <br/>
-                    <Link href="/register">
-                        <button className="btn btn-primary">Registrarse</button>
-                    </Link>
 
+            <div className={styles.containerPrincipal}>
+                <div className={styles.containerSecundario}>
+                    <div className="p-fluid">
+                        <h1>Iniciar sesion</h1>
+                        <br/>
+                        <form>
+                            <label htmlFor="firstname1">Usuario</label>
+                            <br/>
+                            <InputText
+                                type="text"
+                                className="p-field"
+                                name="username"
+                                onChange={(e) => {
+                                    setUsername(e.target.value);
+                                }}
+                                placeholder="Ingrese su usuario "
+                            />
+                            <br/>
+                            <label htmlFor="lastname1">Contraseña</label>
+                            <br/>
+                            <Password
+                                className="p-field"
+                                name="password"
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
+                                placeholder="Ingrese su contraseña "
+                                toggleMask
+                            />
+                            <br/>
+                            <h6>{loginStatus}</h6>
+                            <Button label="Iniciar sesion" className="btn btn-primary" onClick={login}/>
+                        </form>
+                        <br/>
+                        <Link href="/register">
+                            <Button label="Registrarse" className="btn btn-primary"/>
+                        </Link>
+
+                    </div>
                 </div>
             </div>
-        </div>
         </Container>
     );
 
