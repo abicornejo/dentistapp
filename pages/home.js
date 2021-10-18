@@ -1,5 +1,5 @@
 import Container from '../components/container';
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 //import Axios from "axios";
 //import FormDentist from './formDentist';
 import Patient from "./patient";
