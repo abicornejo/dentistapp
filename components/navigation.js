@@ -1,32 +1,38 @@
 import Link from 'next/Link';
+import styles from './styles/Layout.module.css';
 
 const Navigation = () =>{
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <Link href="/">
-                    <a className="navbar-brand" >Home</a>
-                </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" />
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
+    const Toggle = ()  => {
+        const navToggle= document.querySelector(".btnMenu");
+        const navMenu = document.querySelector(".menu");
+        return(
+            navToggle.addEventListener("click", ()=>{
+                navMenu.classList.toggle(".menuItems")
+            })
+        )
+    };
 
-                        <li className="nav-item">
-                            <Link href="/login">
-                                <a className="nav-link">Log in</a>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link href="/register">
-                                <a className="nav-link">Sign up</a>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    return (
+
+        <div>
+            <nav className={styles.menu}>
+                <label className={styles.logo}>DENTISTA</label>
+                <ul className={styles.menuItems}>
+                    <li>
+                        <Link href="/login">
+                            <a>Login</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/register">
+                            <a>Register</a>
+                        </Link>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
     );
 }
 

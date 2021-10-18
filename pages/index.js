@@ -1,14 +1,18 @@
-import Container from '../components/container';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from '../components/navigation';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css'
+
+import Container from '../components/container';
 
 
+const Home = () => {
 
-const Home = () =>{
 
-    return(
+    return (
         <div>
-            <Navigation/>
+            <Navigation />
+            <Container/>
         </div>
 
     );
