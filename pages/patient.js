@@ -9,8 +9,9 @@ import { classNames } from 'primereact/utils';
 import { Sidebar } from 'primereact/sidebar';
 import { InputTextarea } from 'primereact/inputtextarea';
 import Axios from 'axios';
-import AddPatients from "../pages/addPatients"
-
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css'
 
 function Patient() {
     const [first_Name, setFirst_Name] = useState("");
@@ -29,14 +30,14 @@ function Patient() {
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState({});
     const [jsonPat, setJsonPat] = useState({
-        First_Name: "",
-        Last_Name: "",
-        Birthday: "",
-        Gender: "",
-        Phone: "",
-        Email: "",
-        Adress: "",
-        Notes: ""
+        first_Name: "",
+        last_Name: "",
+        birthday: "",
+        gender: "",
+        phone: "",
+        email: "",
+        adress: "",
+        notes: ""
     });
     const json = {
         firstName: first_Name,
@@ -48,18 +49,20 @@ function Patient() {
         adress: adress,
         notes: notes
     }
+    const register=()=>{
+        console.log(jsonPat);
+        Axios.post('http://localhost:3001/add-patient', jsonPat)
+            .then(response=> {
+                console.log(response)
+                // const patient = response.data;
+                // const temp = [patient];
+                // setJsonPat(temp);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
-    Axios.post('http://localhost:3001/patient', json)
-
-        .then(response => {
-            console.log(response)
-            const patient = response.data.data;
-            const temp = [patient];
-            setResult(temp);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
 
     const validate = (data) => {
         let errors = {};
@@ -105,7 +108,7 @@ function Patient() {
     };
 
 
-    const actualizaobj = (e) => { //debugger;
+    const actualizaobj = (e) => {
 
         const nombre = e.target.name;
         const value = e.target.value;
@@ -221,7 +224,7 @@ function Patient() {
                                             </div>
                                         )} />
                                         <br />
-                                        <Button type="submit" label="Save" onClick={AddPatients} className="p-mt-2" />
+                                        <Button type="submit" label="Save" onClick={register} className="p-mt-2" />
                                     </form>
                                 )} />
                             </div>
@@ -231,7 +234,6 @@ function Patient() {
                 </Sidebar>
 
             </div>
-
         </>
     );
 }
