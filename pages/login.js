@@ -66,6 +66,7 @@ function Login () {
                             <Password
                                 className="p-field"
                                 name="password"
+                                feedback={false}
                                 onChange={(e) => {
                                     setPassword(e.target.value);
                                 }}

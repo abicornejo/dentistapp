@@ -118,6 +118,27 @@ app.post('/login', (req, res) => {
 //     );
 // })
 
+
+app.post('/add-patient', (req, res)=>{
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const birthday = req.body.birthday;
+    const gender = req.body.gender;
+    const phone = req.body.phone;
+    const email = req.body.email;
+    const adress = req.body.adress;
+    const notes = req.body.notes;
+
+    connection.query(
+        "INSERT INTO patient_details (first_name, last_name, birthday, gender, phone, email, adress, notes) VALUES (?,?,?,?,?,?,?,?)",
+        [first_name, last_name, birthday, gender, phone, email, adress, notes],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+
+});
+
 app.listen(3001, () => {
     console.log("Runing server");
 });

@@ -2,15 +2,6 @@ import Link from 'next/Link';
 import styles from './styles/Layout.module.css';
 
 const Navigation = () =>{
-    const Toggle = ()  => {
-        const navToggle= document.querySelector(".btnMenu");
-        const navMenu = document.querySelector(".menu");
-        return(
-            navToggle.addEventListener("click", ()=>{
-                navMenu.classList.toggle(".menuItems")
-            })
-        )
-    };
 
     return (
 
