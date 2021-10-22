@@ -29,11 +29,7 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-<<<<<<< HEAD
     "/home": [
-=======
-    "/register": [
->>>>>>> 08c37d4ec534a08ccfaff7ae2773fa77915f0121
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/home.js"

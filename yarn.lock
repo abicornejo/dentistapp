@@ -1405,6 +1405,11 @@ inherits@2.0.3:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
+install@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.13.0.tgz#6af6e9da9dd0987de2ab420f78e60d9c17260776"
+  integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
+
 internal-slot@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/internal-slot/-/internal-slot-1.0.3.tgz#7347e307deeea2faac2ac6205d4bc7d34967f59c"
@@ -2118,10 +2123,10 @@ postcss@8.2.15:
     nanoid "^3.1.23"
     source-map "^0.6.1"
 
-primeflex@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/primeflex/-/primeflex-3.0.1.tgz#38b4f37caf0d20d3d28ed72fe1dee571671fc6b6"
-  integrity sha512-OmBVecmPyXFjIHuOmcbUVGJPh+2TPF3bBVO9ENtu4O4kF6taZThxGrxaWCljkfu6427wLfgDbtFKqq1vU2nj/Q==
+primeflex@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/primeflex/-/primeflex-3.1.0.tgz#2beef527e788981b823e5969752a87d7b72447ee"
+  integrity sha512-q8QutEO59eu79nJVyMFDcpdokiCIk79Rn6Y9NwxpiIp5rxRjNCacH2N7gM+ondQjvYnuj6LLOK8dEVx1J2i7Lw==
 
 primeicons@^4.1.0:
   version "4.1.0"
